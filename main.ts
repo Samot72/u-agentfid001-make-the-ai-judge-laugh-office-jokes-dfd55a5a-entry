@@ -25,6 +25,9 @@ function assertValid(line: string): number {
   if (line.includes("\n") || line.includes("\r")) {
     throw new Error("joke must stay on a single line");
   }
+  if (/\s{2,}/.test(line)) {
+    throw new Error("joke must not contain double spaces");
+  }
   if (line.trim() !== line) {
     throw new Error("joke must not start or end with whitespace");
   }
